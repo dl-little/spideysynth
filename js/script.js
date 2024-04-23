@@ -276,11 +276,8 @@ $(document).ready(function(){
 		gain.connect(lowpassFilter);
 		lowpassFilter.connect(analyser);
 		analyser.connect(audioContext.destination);
-
 	}
 
-	// wtjo
 	canvasContext.fillStyle = 'rgb(200, 200, 200)';
 	canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-
 });
