@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spidey Synth | Doug Little, Web Developer</title>
+	<meta charset="utf-8"/>
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body class="dark-bg">
+<header>
+	<h1 class="white-text">spidey synth</h1>
+</header>
+<main>
+	<section id="synth-wrap" class="blue-bg box-shadow">
+		<section id="synth-controls">
+			<fieldset class="control-group black-text" id="volume-group">
+				<legend>volume controls</legend>
+				<span class="control-group-span checkbox-group">
+					<label for="mute">mute: </label>
+					<input type="checkbox" id="mute" value="1"/>
+				</span>
+				<span class="control-group-span">
+					<label for="volume">gain: <span class="feed" id="volume-display"><input type="number" name="volume-input" id="volume-input" min="0" max="100" value="100"/></span></label>
+					<input type="range" id="volume" name="volume" min="0" max="100" value="100" />
+				</span>
+				<span class="control-group-span kalimba-mode">
+					<label for="decay">sustain: <span class="feed" id="decay-display"><input type="number" name="decay-input" id="decay-input" min="0" max="10" value=".5" step="0.01"/></span></label>
+					<input type="range" id="decay" name="decay" min="0" max="10" value=".5" step="0.01" />
+				</span>
+			</fieldset>
+			<fieldset class="control-group black-text">
+				<legend>waves</legend>
+				<span class="control-group-span">
+					<label for="wave">wave form: </label>
+					<select id="wave">
+						<option value="sine" selected="selected">sine</option>
+						<option value="square">square</option>
+						<option value="sawtooth">sawtooth</option>
+						<option value="triangle">triangle</option>
+					</select>
+				</span>
+			</fieldset>
+			<fieldset id="octave" class="control-group black-text inline-control-group">
+				<legend>octave</legend>
+				<span class="control-group-span">
+					<span class="octave-group">
+						<label for="down" class="">octave down</label>
+						<input name="octave" type="radio" id="down">
+						<label for="down">press z</label>
+					</span>
+					<span class="octave-group">
+						<label for="middle" class="">middle c</label>
+						<input type="radio" name="octave" id="middle" checked />
+						<label for="middle">press x</label>
+					</span>
+					<span class="octave-group">
+						<label for="up" class="">octave up</label>
+						<input name="octave" type="radio" id="up">
+						<label for="up">press c</label>
+					</span>
+				</span>
+			</fieldset>
+			<fieldset class="control-group black-text inline-control-group">
+				<legend>display</legend>
+				<div class="display-group">
+					<span class="control-group-span checkbox-group">
+						<label for="keyboard">show keyboard letters: </label>
+						<input type="checkbox" id="keyboard" value="1" checked />
+					</span>
+				</div>
+			</fieldset>
+			<fieldset class="control-group black-text inline-control-group">
+				<legend>filters</legend>
+				<div class="filter-group">
+					<span class="control-group-span checkbox-group">
+						<label for="lowpass">lowpass: </label>
+						<input type="checkbox" id="lowpass" value="1" />
+					</span>
+					<span data-toggler="lowpass" class="control-group-span filter-controls disabled">
+						<label for="lowpass-frequency">frequency: <span class="feed" id="lowpass-display"><input type="number" name="lowpass-frequency-input" id="lowpass-frequency-input" min="80" max="1000" value="80" step="5" /></span></label>
+						<input type="range" id="lowpass-frequency" name="lowpass-frequency" min="80" max="1000" value="80" step="5" />
+					</span>
+					<span data-toggler="lowpass" class="control-group-span filter-controls disabled">
+						<label for="lowpass-gain">gain: <span class="feed" id="lowpass-gain-display"><input type="number" name="lowpass-gain-input" id="lowpass-gain-input" min="0" max="1000" value="0" step="10" /></span></label>
+						<input type="range" id="lowpass-gain" name="lowpass-gain" min="0" max="1000" value="0" step="10" />
+					</span>
+				</div>
+			</fieldset>
+			<fieldset class="control-group black-text inline-control-group">
+				<legend>visualization</legend>
+				<canvas id="visualization"></canvas>
+			</fieldset>
+		</section>
+		<section id="synth-keyboard">
+			<button data-trigger="a" data-freq="261.63" class="white key white-bg" id="1"></button>
+			<button data-trigger="w" data-freq="277.18" class="black key dark-bg" id="2"></button>
+			<button data-trigger="s" data-freq="293.66" class="white key white-bg" id="3"></button>
+			<button data-trigger="e" data-freq="311.13" class="black key dark-bg" id="4"></button>
+			<button data-trigger="d" data-freq="329.63" class="white key white-bg" id="5"></button>
+			<button data-trigger="f" data-freq="349.23" class="white key white-bg" id="6"></button>
+			<button data-trigger="t" data-freq="369.99" class="black key dark-bg" id="7"></button>
+			<button data-trigger="g" data-freq="392.00" class="white key white-bg" id="8"></button>
+			<button data-trigger="y" data-freq="415.30" class="black key dark-bg" id="9"></button>
+			<button data-trigger="h" data-freq="440.00" class="white key white-bg" id="10"></button>
+			<button data-trigger="u" data-freq="466.16" class="black key dark-bg" id="11"></button>
+			<button data-trigger="j" data-freq="493.88" class="white key white-bg" id="12"></button>
+			<button data-trigger="k" data-freq="523.25" class="white key white-bg" id="13"></button>
+			<button data-trigger="o" data-freq="554.37" class="black key dark-bg" id="14"></button>
+			<button data-trigger="l" data-freq="587.33" class="white key white-bg" id="15"></button>
+		</section>
+	</section>
+</main>
+<footer>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+</footer>
+</body>
+</html>

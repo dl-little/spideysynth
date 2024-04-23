@@ -1,0 +1,277 @@
+/* UTILITY */
+
+.hidden-visually:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+body{
+	margin:0;
+	padding:0;
+	font-size:16px;
+	display:flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+	height:100vh;
+	width:100vw;
+}
+
+header{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-content: flex-start;	
+}
+
+header,footer,main{
+	width:calc(100% - 60px);
+	padding:30px;
+}
+
+header, footer{
+	flex:1;
+}
+
+main{
+	flex:10;
+}
+
+#visualization{
+	max-height:78px;
+	flex-grow:1;
+}
+
+/* 
+
+colors 
+
+*/
+
+.dark-bg{
+	background-color:#3B3B3B;
+}
+
+.blue-bg{
+	background-color:#B1B1B1;
+}
+
+.white-text{
+	color:#F7F7F7;
+}
+
+.black-text{
+	color:#222222;
+}
+
+.white-bg{
+	color:#222222;
+}
+
+.box-shadow{
+	-webkit-box-shadow:5px 5px 5px #222222;
+	box-shadow:5px 5px 5px #222222;
+}
+
+.feed{
+	display:inline-block;
+}
+
+/* 
+
+header 
+
+*/
+
+header h1{
+	font-family:"Righteous", sans-serif;
+}
+
+/* 
+
+main 
+
+*/
+
+main{
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+main #synth-wrap{
+	width:80%;
+	height:100%;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items:center;
+}
+
+main #synth-wrap #synth-controls{
+	flex:2;
+	width:100%;
+	box-sizing: border-box;
+	padding:15px;
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+main #synth-wrap #synth-controls .control-group{
+	display:flex;
+	flex-flow:row wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	min-width:15%;
+}
+
+main #synth-wrap #synth-controls .control-group{
+	margin:0 0 15px;
+}
+
+main #synth-wrap #synth-controls .control-group:last-of-type{
+	margin-bottom:0;
+}
+
+main #synth-wrap #synth-controls .control-group .control-group-span{
+	margin:15px;
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start; 
+	align-items: flex-start;
+}
+
+main #synth-wrap #synth-controls .control-group .control-group-span:not(.checkbox-group){
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+main #synth-wrap #synth-controls .control-group .control-group-span.infinity-mode:after{
+	content:"infinite-hold!";
+}
+
+main #synth-wrap #synth-controls .control-group .control-group-span.kalimba-mode:after{
+	content:"kalimba-mode!";
+}
+
+main #synth-wrap #synth-controls .control-group .control-group-span:after{
+	position: absolute;
+	bottom:-15px;
+	font-size: 13px;
+}
+
+main #synth-wrap #synth-controls .control-group .control-group-span .feed input{
+	width:85px;
+}
+
+main #synth-wrap #synth-controls .control-group .filter-group{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* OCTAVE */
+
+main #synth-wrap #synth-controls #octave.control-group .control-group-span{
+	display:flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+main #synth-wrap #synth-controls #octave.control-group .control-group-span .octave-group{
+	margin:7.5px 15px;
+}
+
+main #synth-wrap #synth-controls #octave.control-group .control-group-span .octave-group label{
+	display: block;
+}
+
+main #synth-wrap #synth-keyboard{
+	flex:1;
+	width:100%;
+	border-top:3px inset #222222;
+	display:flex;
+	flex-flow:row nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	position:relative;
+	min-height:160px;
+}
+
+main #synth-wrap #synth-keyboard .key{
+	flex:1;
+	height:100%;
+	border:1px inset #222222;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content: flex-end;
+	align-items:flex-start;
+}
+
+main #synth-wrap #synth-keyboard .key.active{
+	background:#829AB1;
+}
+
+main #synth-wrap #synth-keyboard .key.black{
+	position:absolute;
+	height:70%;
+	left:0;
+	top:0;
+	width:calc(11.11%/2);
+	color:#F7F7F7;
+}
+
+main #synth-wrap #synth-keyboard .key:nth-of-type(2){
+	left:calc(11.11% - 3%);
+}
+
+main #synth-wrap #synth-keyboard .key:nth-of-type(4){
+	left:calc(22.22% - 3%);
+}
+
+main #synth-wrap #synth-keyboard .key:nth-of-type(7){
+	left:calc(44.44% - 3%);
+}
+
+main #synth-wrap #synth-keyboard .key:nth-of-type(9){
+	left:calc(55.55% - 3%);
+}
+
+main #synth-wrap #synth-keyboard .key:nth-of-type(11){
+	left:calc(66.66% - 3%);
+}
+
+main #synth-wrap #synth-keyboard .key:nth-of-type(14){
+	left:calc(88.88% - 3%);
+}
+
+
+
+/* 
+
+footer
+
+*/
+
+@media screen and (max-width:415px){
+	main #synth-wrap{
+		display:none !important;
+	}
+	main:after{
+		content:"Sorry, bub! Screen too small.";
+		color:white;
+	}
+}
